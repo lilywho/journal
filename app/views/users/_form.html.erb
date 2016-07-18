@@ -1,0 +1,6 @@
+<%= form_for new_user_entry_path(@user.id)  do |form| %>
+	<%= form.date_select :date, :start_year => 2000, 
+   :use_month_numbers => true, :order => [:month, :day, :year] %> <br />
+	<%= form.text_field :entry, placeholder: 'Thoughts for today...' %> <br />
+	<%= form.submit "Save" %>
+<% end %>

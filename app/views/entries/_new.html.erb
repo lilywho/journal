@@ -1,0 +1,10 @@
+<div id="main">
+	<button class="index"><%= link_to 'All Entries', user_path(@user), :method => :get %></button>
+
+	<%= form_for [@user, @entry] do |form| %>
+		<%= form.date_select :date, :start_year => 2000, 
+	   :order => [:month, :day, :year] %> <br />
+		<%= form.text_field :text, :id => "entry", placeholder: 'Thoughts for today...' %> <br />
+		<button>Submit Entry</button>
+	<% end %>
+</div>

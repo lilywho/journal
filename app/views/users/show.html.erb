@@ -1,0 +1,24 @@
+<div id="main">
+	<div id="new">
+		<%= link_to '+', new_user_entry_url(@user.id) %>
+	</div>
+
+	<% @user.entries.sort_by { |entry| entry.date }.each do |entry| %>
+		<hr>
+		<table>
+			<tr class='day-year-row'>
+				<td rowspan='4' class='day-of-year'><%= entry.date.strftime('%j') %></td>
+			</tr>
+			<tr class='date-row'>
+				<th><%= entry.date.strftime('%A, %B %d, %Y') %></th>
+			</tr>
+			<tr>
+				<td colspan='2' class='text'><%= entry.text %></td>
+			</tr>
+			<tr class='change-entry'>	
+				<td class='edit'><%= link_to 'Edit', edit_user_entry_path(@user, entry), :method => :get %></td>
+				<td class='delete'><%= link_to 'Delete', user_entry_path(@user, entry), :method => :delete, :confirm => 'Are you sure?' %></td>
+			</tr>
+		</table>
+	<% end %>
+</div>

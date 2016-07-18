@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Journal</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "styles.css", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<header id="header">
+  <div class="navbar-text pull-right">
+    <% if user_signed_in? %>
+      <div id='logout'>
+        <button><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></button>
+      </div>
+    <% end %>
+    <h1><%= link_to '365', user_path(@user), :method => :get %></h1>
+  </div>
+</header>
+
+<body>
+
+  <%= yield %>
+
+</body>
+</html>
